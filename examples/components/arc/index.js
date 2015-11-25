@@ -1,46 +1,73 @@
-import ArcExampleDownload from './download';
-import ArcExamplePlay from './play';
-import ArcExampleRainbow from './rainbow';
-import React from 'react';
+import {ArcExampleDownload} from './download';
+import {ArcExamplePlayback} from './playback';
+import {ArcExampleRainbow} from './rainbow';
+import {Layout} from '../layout';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 
-const {Component, PropTypes} = React;
+function ArcExamplesComponent (props) {
+  const styleExample = {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  };
+  const styleLabel = {
+    marginTop: '1vmin'
+  };
 
-export default class ArcExamples extends Component {
-  constructor (props, context) {
-    super(props, context);
-
-    this.state = context.state;
-  }
-
-  componentDidMount () {
-    const {props, state} = this;
-    const {route} = props;
-
-    if (state.component) { return; }
-
-    const {action} = route.props;
-
-    action().then(state => this.setState(state));
-  }
-
-  render () {
-    const {name} = this.state.component;
-
-    return (
+  return (
+    <Layout pathname={props.location.pathname} title="Arc">
       <div style={{
-        fontFamily: 'sans-serif',
-        padding: '10px',
-        margin: '10px auto'
+        alignItems: 'flex-end',
+        display: 'flex',
+        justifyContent: 'space-around',
+        width: '100vmin'
       }}>
-        <div>{name}</div>
-        <ArcExampleDownload/>
-        <ArcExamplePlay/>
-        <ArcExampleRainbow/>
+        <div style={styleExample}>
+          <ArcExampleDownload/>
+          <div style={styleLabel}>{'Download'}</div>
+        </div>
+        <div style={styleExample}>
+          <ArcExamplePlayback icon={props.icon}/>
+          <div style={styleLabel}>{'Playback'}</div>
+        </div>
+        <div style={styleExample}>
+          <ArcExampleRainbow/>
+          <div style={styleLabel}>{'Rainbow'}</div>
+        </div>
       </div>
-    );
-  }
+    </Layout>
+  );
 }
 
-ArcExamples.contextTypes = {
-  state: PropTypes.object
+ArcExamplesComponent.propTypes = {
+  download: PropTypes.shape({
+    percent: PropTypes.number
+  }),
+  icon: PropTypes.shape({
+    color: PropTypes.string.isRequired
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+  playback: PropTypes.shape({
+    decimal: PropTypes.number,
+    status: PropTypes.string
+  }),
+  rainbow: PropTypes.shape({
+    degrees: PropTypes.number
+  })
 };
+
+function mapStateToProps (state) {
+  return {
+    download: state.download,
+    icon: state.icon,
+    location: state.location,
+    playback: state.playback,
+    rainbow: state.rainbow
+  };
+}
+
+export const ArcExamples = connect(mapStateToProps)(ArcExamplesComponent);

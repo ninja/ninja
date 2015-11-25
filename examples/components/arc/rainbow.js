@@ -1,63 +1,29 @@
-import NinjaArc from 'ninja-arc';
+import {Arc} from 'ninja';
 import React from 'react';
 
-const degrees = 180;
-const strokeLinecap = 'square';
-const strokeWidth = 4;
+const degreesEnd = 0;
+const degreesStart = -180;
 
-export default class ArcExampleRainbow extends React.Component {
-  render () {
-    return (
-      <div style={{display: 'inline-block', transform: 'rotate(-90deg)'}}>
-        <NinjaArc degrees={degrees} style={{
-          stroke: 'red',
-          strokeLinecap,
-          strokeWidth,
-          width: 44
-        }}>
-          <NinjaArc degrees={degrees} style={{
-            stroke: 'orange',
-            strokeLinecap,
-            strokeWidth,
-            width: 40
-          }}>
-            <NinjaArc degrees={degrees} style={{
-              stroke: 'yellow',
-              strokeLinecap,
-              strokeWidth,
-              width: 36
-            }}>
-              <NinjaArc degrees={degrees} style={{
-                stroke: 'green',
-                strokeLinecap,
-                strokeWidth,
-                width: 32
-              }}>
-                <NinjaArc degrees={degrees} style={{
-                  stroke: 'blue',
-                  strokeLinecap,
-                  strokeWidth,
-                  width: 28
-                }}>
-                  <NinjaArc degrees={degrees} style={{
-                    stroke: 'indigo',
-                    strokeLinecap,
-                    strokeWidth,
-                    width: 24
-                  }}>
-                    <NinjaArc degrees={degrees} style={{
-                      stroke: 'violet',
-                      strokeLinecap,
-                      strokeWidth,
-                      width: 20
-                    }}/>
-                  </NinjaArc>
-                </NinjaArc>
-              </NinjaArc>
-            </NinjaArc>
-          </NinjaArc>
-        </NinjaArc>
-      </div>
-    );
-  }
+export function ArcExampleRainbow () {
+  return (
+    <div style={{
+      height: 50,
+      overflow: 'hidden',
+      width: 100
+    }}>
+      <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="red" width={100}>
+        <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="orange" width={92}>
+          <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="yellow" width={86}>
+            <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="green" width={78}>
+              <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="blue" width={70}>
+                <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="indigo" width={62}>
+                  <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="violet" width={54}/>
+                </Arc>
+              </Arc>
+            </Arc>
+          </Arc>
+        </Arc>
+      </Arc>
+    </div>
+  );
 }

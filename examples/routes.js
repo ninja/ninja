@@ -1,14 +1,13 @@
-import React from 'react';
+import {ArcExamples} from './components/arc';
+import {IconExamples} from './components/icon';
 import {IndexRoute, Route} from 'react-router';
-import {fetchComponent, fetchIndex} from './actions';
-import Arc from './components/arc';
-import Icon from './components/icon';
-import Index from './components';
+import React from 'react';
+import {Welcome} from './components/welcome';
 
-export default (
+export const routes = (
   <Route path="/">
-    <IndexRoute component={Index} props={{action: fetchIndex}}/>
-    <Route component={Arc} path="/arc" props={{action: fetchComponent.bind(this, 'arc')}}/>
-    <Route component={Icon} path="/icon" props={{action: fetchComponent.bind(this, 'icon')}}/>
+    <IndexRoute component={Welcome}/>
+    <Route component={ArcExamples} path="arc"/>
+    <Route component={IconExamples} path="icon"/>
   </Route>
 );
