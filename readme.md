@@ -1,1 +1,1 @@
-# Ninja UI
+# Ninja
