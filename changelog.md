@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Arc.
 - Icons.
+- Build infrastructure.
+- Examples for arc and icon components.
+- Test infrastructure (without tests).
 
 ### Changed
 - Complete rewrite as React components with no backwards compatibility.
