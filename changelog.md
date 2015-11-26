@@ -4,7 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [2.0.0] - 2015-11-20
+##[2.0.1] - 2015-11-25
+### Fixed
+- Corrects require paths for icon graphics.
+
+## [2.0.0] - 2015-11-24
 ### Added
 - Arc.
 - Icons.
@@ -19,5 +23,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/2.0.0...develop
+[Unreleased]: https://github.com/ninja/ruto/compare/2.0.1...develop
+[2.0.1]: https://github.com/ninja/ruto/compare/2.0.1...2.0.0
 [2.0.0]: https://github.com/ninja/ruto/compare/2.0.0

@@ -1,7 +1,7 @@
 import {PropTypes} from 'react';
-import {Pause} from 'ninja/graphics/pause';
-import {Play} from 'ninja/graphics/play';
-import {Stop} from 'ninja/graphics/stop';
+import {Pause} from './graphics/pause';
+import {Play} from './graphics/play';
+import {Stop} from './graphics/stop';
 
 const graphics = {
   pause: Pause,
