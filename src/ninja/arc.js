@@ -47,10 +47,10 @@ export class Arc extends Component {
   }
 
   render () {
-    const {children, width} = this.props;
+    const {children, onClick, width} = this.props;
 
     return (
-      <div style={{position: 'relative'}}>
+      <div onClick={onClick} style={{position: 'relative'}}>
         <canvas height={width} ref="canvas" width={width}/>
         <div style={{
           alignItems: 'center',
@@ -87,6 +87,7 @@ Arc.propTypes = {
   fillStyle: PropTypes.string,
   lineCap: PropTypes.string,
   lineWidth: PropTypes.number,
+  onClick: PropTypes.func,
   strokeStyle: PropTypes.string,
   width: PropTypes.number
 };

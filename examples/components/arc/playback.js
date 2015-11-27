@@ -22,27 +22,26 @@ export class ArcExamplePlayback extends Component {
     const boundClick = this.handleClick.bind(this);
 
     return (
-      <div onClick={boundClick}>
+      <Arc
+        degreesEnd={360}
+        degreesStart={0}
+        lineWidth={4}
+        onClick={boundClick}
+        strokeStyle={icon.color}
+        width={64}>
         <Arc
-          degreesEnd={360}
-          degreesStart={0}
+          degreesEnd={playing ? 60 : -90}
+          degreesStart={-90}
+          lineCap="round"
           lineWidth={4}
-          strokeStyle={icon.color}
+          strokeStyle={colorActive}
           width={64}>
-          <Arc
-            degreesEnd={playing ? 60 : -90}
-            degreesStart={-90}
-            lineCap="round"
-            lineWidth={4}
-            strokeStyle={colorActive}
-            width={64}>
-            <Icon graphic={playing ? 'pause' : 'play'} style={{
-              fill: icon.color,
-              width: 32
-            }}/>
-          </Arc>
+          <Icon graphic={playing ? 'pause' : 'play'} style={{
+            fill: icon.color,
+            width: 32
+          }}/>
         </Arc>
-      </div>
+      </Arc>
     );
   }
 }
