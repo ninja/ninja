@@ -18,7 +18,7 @@ export const config = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          plugins: [
+          // plugins: [
             // Disabled until Babel 6 is supported.
             // https://github.com/gaearon/babel-plugin-react-transform/issues/46
             // [
@@ -37,7 +37,7 @@ export const config = {
             //     ]
             //   }
             // ]
-          ],
+          // ],
           presets: ['es2015', 'react']
         },
         test: /\.js$/
