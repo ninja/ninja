@@ -1,11 +1,17 @@
-import {Icon} from 'ninja';
+import {IconPause, IconPlay, IconStop} from 'ninja';
 import {Layout} from './layout';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-const keys = ['pause', 'play', 'stop'];
-
 function IconExamplesComponent (props) {
+  const styleIcon = {fill: props.icon.color, height: '10vmin'};
+  const styleIconWrapper = {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  };
+
   return (
     <Layout pathname={props.location.pathname} title="Icon">
       <div style={{
@@ -14,22 +20,18 @@ function IconExamplesComponent (props) {
         justifyContent: 'space-around',
         width: '100vmin'
       }}>
-        {keys.map(key => {
-          return (
-            <div key={key} style={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}>
-              <Icon graphic={key} style={{
-                fill: props.icon.color,
-                height: '10vmin'
-              }}/>
-              <div>{key}</div>
-            </div>
-          );
-        })}
+        <div style={styleIconWrapper}>
+          <IconPause style={styleIcon}/>
+          <div>{'pause'}</div>
+        </div>
+        <div style={styleIconWrapper}>
+          <IconPlay style={styleIcon}/>
+          <div>{'play'}</div>
+        </div>
+        <div style={styleIconWrapper}>
+          <IconStop style={styleIcon}/>
+          <div>{'stop'}</div>
+        </div>
       </div>
     </Layout>
   );

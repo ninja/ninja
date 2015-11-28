@@ -1,2 +1,4 @@
 export {Arc} from './arc';
-export {Icon} from './icon';
+export {IconPause} from './icons/pause';
+export {IconPlay} from './icons/play';
+export {IconStop} from './icons/stop';

@@ -1,92 +1,69 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
-function getRadians (degrees) {
-  return (Math.PI / 180) * degrees;
-}
+export function Arc (props) {
+  const {children, degrees, degreesStart, onClick, percent} = props;
+  const style = Object.assign({}, Arc.defaultProps.style, props.style);
+  const strokeWidth = style.strokeWidth / style.width;
+  const r = (1 - strokeWidth) / 2;
+  const strokeDasharray = 2 * Math.PI * r;
 
-export class Arc extends Component {
-  componentDidMount () {
-    this.draw(this.refs.canvas.getContext('2d'));
-  }
+  let {decimal} = props;
+  if (percent > 0) { decimal = percent / 100; }
+  else if (degrees > 0) { decimal = degrees / 360; }
 
-  componentDidUpdate () {
-    const {width} = this.props;
-    const context = this.refs.canvas.getContext('2d');
+  const strokeDashoffset = strokeDasharray - strokeDasharray * decimal;
 
-    context.clearRect(0, 0, width, width);
-
-    this.draw(context);
-  }
-
-  draw (context) {
-    const {
-      anticlockwise,
-      degreesEnd,
-      degreesStart,
-      fillStyle,
-      lineCap,
-      lineWidth,
-      strokeStyle,
-      width
-    } = this.props;
-    const center = width / 2;
-    const radius = (width - lineWidth) / 2;
-    const endAngle = getRadians(degreesEnd);
-    const startAngle = getRadians(degreesStart);
-
-    context.save();
-    context.beginPath();
-    context.arc(center, center, radius, startAngle, endAngle, anticlockwise);
-    context.lineCap = lineCap;
-    context.lineWidth = lineWidth;
-    context.fillStyle = fillStyle;
-    context.fill();
-    context.strokeStyle = strokeStyle;
-    context.stroke();
-    context.restore();
-  }
-
-  render () {
-    const {children, width} = this.props;
-
-    return (
-      <div style={{position: 'relative'}}>
-        <canvas height={width} ref="canvas" width={width}/>
-        <div style={{
-          alignItems: 'center',
-          bottom: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          left: 0,
-          position: 'absolute',
-          right: 0,
-          top: 0
-        }}>{children}</div>
-      </div>
-    );
-  }
+  return (
+    <div onClick={onClick} style={{position: 'relative'}}>
+      <svg style={style} viewBox="0 0 1 1">
+        <circle
+          cx=".5"
+          cy=".5"
+          r={r}
+          strokeDasharray={strokeDasharray}
+          // strokeDashoffset={strokeDashoffset}
+          // strokeDashoffset property is currently ignored by React.
+          strokeWidth={strokeWidth}
+          style={{strokeDashoffset}}
+          transform={`rotate(${degreesStart} .5 .5)`}/>
+      </svg>
+      <div style={{
+        alignItems: 'center',
+        bottom: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0
+      }}>{children}</div>
+    </div>
+  );
 }
 
 Arc.defaultProps = {
-  anticlockwise: false,
-  degreesEnd: 270,
+  decimal: 1,
   degreesStart: -90,
-  fillStyle: 'transparent',
-  lineCap: 'square',
-  lineWidth: 4,
-  strokeStyle: 'black',
-  width: 64
+  style: {
+    fill: 'none',
+    stroke: 'black',
+    strokeWidth: 4,
+    width: 64
+  }
 };
 
 Arc.propTypes = {
-  anticlockwise: PropTypes.bool,
-  canvas: PropTypes.node,
   children: PropTypes.node,
-  degreesEnd: PropTypes.number,
+  decimal: PropTypes.number,
+  degrees: PropTypes.number,
   degreesStart: PropTypes.number,
-  fillStyle: PropTypes.string,
-  lineCap: PropTypes.string,
-  lineWidth: PropTypes.number,
-  strokeStyle: PropTypes.string,
-  width: PropTypes.number
+  onClick: PropTypes.func,
+  percent: PropTypes.number,
+  style: PropTypes.shape({
+    fill: PropTypes.string,
+    stroke: PropTypes.string,
+    strokeLinecap: PropTypes.string,
+    strokeWidth: PropTypes.number,
+    width: PropTypes.number
+  })
 };
