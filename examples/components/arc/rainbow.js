@@ -1,7 +1,7 @@
 import {Arc} from 'ninja';
 import React from 'react';
 
-const degreesEnd = 0;
+const degrees = 180;
 const degreesStart = -180;
 
 export function ArcExampleRainbow () {
@@ -11,13 +11,34 @@ export function ArcExampleRainbow () {
       overflow: 'hidden',
       width: 100
     }}>
-      <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="red" width={100}>
-        <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="orange" width={92}>
-          <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="yellow" width={86}>
-            <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="green" width={78}>
-              <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="blue" width={70}>
-                <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="indigo" width={62}>
-                  <Arc degreesEnd={degreesEnd} degreesStart={degreesStart} strokeStyle="violet" width={54}/>
+      <Arc degrees={degrees} degreesStart={degreesStart} style={{
+        stroke: 'red',
+        width: 100
+      }}>
+        <Arc degrees={degrees} degreesStart={degreesStart} style={{
+          stroke: 'orange',
+          width: 92
+        }}>
+          <Arc degrees={degrees} degreesStart={degreesStart} style={{
+            stroke: 'yellow',
+            width: 86
+          }}>
+            <Arc degrees={degrees} degreesStart={degreesStart} style={{
+              stroke: 'green',
+              width: 78
+            }}>
+              <Arc degrees={degrees} degreesStart={degreesStart} style={{
+                stroke: 'blue',
+                width: 70
+              }}>
+                <Arc degrees={degrees} degreesStart={degreesStart} style={{
+                  stroke: 'indigo',
+                  width: 62
+                }}>
+                  <Arc degrees={degrees} degreesStart={degreesStart} style={{
+                    stroke: 'violet',
+                    width: 54
+                  }}/>
                 </Arc>
               </Arc>
             </Arc>

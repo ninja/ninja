@@ -1,4 +1,4 @@
-import {Arc, Icon} from 'ninja';
+import {Arc, IconPause, IconPlay} from 'ninja';
 import React, {Component, PropTypes} from 'react';
 
 const colorActive = 'rgb(14, 122, 254)';
@@ -7,7 +7,7 @@ export class ArcExamplePlayback extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {playing: false};
+    this.state = {playing: true};
   }
 
   handleClick () {
@@ -20,26 +20,24 @@ export class ArcExamplePlayback extends Component {
     const {icon} = this.props;
     const {playing} = this.state;
     const boundClick = this.handleClick.bind(this);
+    const styleIcon = {fill: icon.color, width: 32};
 
     return (
-      <Arc
-        degreesEnd={360}
-        degreesStart={0}
-        lineWidth={4}
-        onClick={boundClick}
-        strokeStyle={icon.color}
-        width={64}>
-        <Arc
-          degreesEnd={playing ? 60 : -90}
-          degreesStart={-90}
-          lineCap="round"
-          lineWidth={4}
-          strokeStyle={colorActive}
-          width={64}>
-          <Icon graphic={playing ? 'pause' : 'play'} style={{
-            fill: icon.color,
-            width: 32
-          }}/>
+      <Arc onClick={boundClick} style={{
+        stroke: icon.color,
+        strokeWidth: 8,
+        width: 64
+      }}>
+        <Arc decimal={playing ? .33 : 0} style={{
+          stroke: colorActive,
+          strokeLinecap: 'round',
+          strokeWidth: 6,
+          width: 62
+        }}>
+          {playing ?
+            <IconPause style={styleIcon}/> :
+            <IconPlay style={styleIcon}/>
+          }
         </Arc>
       </Arc>
     );

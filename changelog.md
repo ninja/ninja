@@ -3,8 +3,18 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+##[3.0.0] - 2015-11-27
 ### Added
 - Arc passes onClick prop to it's outermost DOM element.
+- Arc now remains crisp any resolution and zoom level.
+
+### Changed
+- Each icon now directly exported, extended from a common component.
+- Single icon component with graphic prop deprecated.
+
+### Fixed
+- Arc radius calculation corrected to avoid cropping at the boundary.
 
 ##[2.0.1] - 2015-11-25
 ### Fixed
@@ -25,6 +35,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/2.0.1...develop
+[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.0
+[3.0.0]: https://github.com/ninja/ruto/compare/3.0.0...2.0.1
 [2.0.1]: https://github.com/ninja/ruto/compare/2.0.1...2.0.0
 [2.0.0]: https://github.com/ninja/ruto/compare/2.0.0
