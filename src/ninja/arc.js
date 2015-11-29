@@ -15,17 +15,20 @@ export function Arc (props) {
 
   return (
     <div onClick={onClick} style={{position: 'relative'}}>
-      <svg style={style} viewBox="0 0 1 1">
+      <svg
+        style={style}
+        viewBox="0 0 1 1">
+        <g strokeDashoffset={strokeDasharray}>
         <circle
           cx=".5"
           cy=".5"
+          is // Disable JSX magic attributes to support stroke-dashoffset.
           r={r}
-          strokeDasharray={strokeDasharray}
-          // strokeDashoffset={strokeDashoffset}
-          // strokeDashoffset property is currently ignored by React.
-          strokeWidth={strokeWidth}
-          style={{strokeDashoffset}}
+          stroke-dasharray={strokeDasharray}
+          stroke-dashoffset={strokeDashoffset}
+          stroke-width={strokeWidth}
           transform={`rotate(${degreesStart} .5 .5)`}/>
+        </g>
       </svg>
       <div style={{
         alignItems: 'center',
