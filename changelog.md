@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+##[3.0.2] - 2015-11-30
+### Changed
+- Updates development dependencies.
+
+### Fixed
+- Corrects accuracy of Arc's length.
+
 ##[3.0.1] - 2015-11-28
 ### Fixed
 - Enables Arc's stroke-dashoffset property via the is property (was CSS).
@@ -39,7 +46,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.1
+[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.2
+[3.0.2]: https://github.com/ninja/ruto/compare/3.0.2...3.0.1
 [3.0.1]: https://github.com/ninja/ruto/compare/3.0.1...3.0.0
 [3.0.0]: https://github.com/ninja/ruto/compare/3.0.0...2.0.1
 [2.0.1]: https://github.com/ninja/ruto/compare/2.0.1...2.0.0
