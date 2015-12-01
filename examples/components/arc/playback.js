@@ -30,7 +30,6 @@ export class ArcExamplePlayback extends Component {
       }}>
         <Arc decimal={playing ? .33 : 0} style={{
           stroke: colorActive,
-          strokeLinecap: 'round',
           strokeWidth: 6,
           width: 62
         }}>

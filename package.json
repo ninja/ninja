@@ -12,9 +12,9 @@
     "babel-tape-runner": "^1.3.0",
     "css-loader": "^0.23.0",
     "eslint": "^1.10.2",
-    "eslint-config-ninja": "^1.1.1",
+    "eslint-config-ninja": "^1.1.3",
     "eslint-loader": "^1.1.1",
-    "eslint-plugin-react": "^3.10.0",
+    "eslint-plugin-react": "^3.11.2",
     "hapi": "^11.1.2",
     "hapi-webpack-plugin": "^1.2.2",
     "history": "^1.13.1",
@@ -69,5 +69,5 @@
     "start:hapi": "Starts hapi server with examples.",
     "test": "Runs all tests."
   },
-  "version": "3.0.1"
+  "version": "3.0.2"
 }

@@ -3,13 +3,14 @@ import React, {PropTypes} from 'react';
 export function Arc (props) {
   const {children, degrees, degreesStart, onClick, percent} = props;
   const style = Object.assign({}, Arc.defaultProps.style, props.style);
-  const strokeWidth = style.strokeWidth / style.width;
-  const r = (1 - strokeWidth) / 2;
+  const {strokeWidth, width} = style;
+  const center = width / 2;
+  const r = (width - strokeWidth) / 2;
   const strokeDasharray = 2 * Math.PI * r;
 
   let {decimal} = props;
   if (percent > 0) { decimal = percent / 100; }
-  else if (degrees > 0) { decimal = degrees / 360; }
+  if (degrees > 0) { decimal = degrees / 360; }
 
   const strokeDashoffset = strokeDasharray - strokeDasharray * decimal;
 
@@ -17,18 +18,16 @@ export function Arc (props) {
     <div onClick={onClick} style={{position: 'relative'}}>
       <svg
         style={style}
-        viewBox="0 0 1 1">
-        <g strokeDashoffset={strokeDasharray}>
+        viewBox={`0 0 ${width} ${width}`}>
         <circle
-          cx=".5"
-          cy=".5"
+          cx={center}
+          cy={center}
           is // Disable JSX magic attributes to support stroke-dashoffset.
           r={r}
           stroke-dasharray={strokeDasharray}
           stroke-dashoffset={strokeDashoffset}
           stroke-width={strokeWidth}
-          transform={`rotate(${degreesStart} .5 .5)`}/>
-        </g>
+          transform={`rotate(${degreesStart} ${center} ${center})`}/>
       </svg>
       <div style={{
         alignItems: 'center',
@@ -50,6 +49,7 @@ Arc.defaultProps = {
   style: {
     fill: 'none',
     stroke: 'black',
+    strokeLinecap: 'butt',
     strokeWidth: 4,
     width: 64
   }
