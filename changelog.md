@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+##[3.0.3] - 2015-12-03
+### Changed
+- lodash replaces "native" Object.assign for unviversal arc styles.
+- Updates development dependencies.
+
 ##[3.0.2] - 2015-11-30
 ### Changed
 - Updates development dependencies.

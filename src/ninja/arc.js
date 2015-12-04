@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
+import {assign} from 'lodash';
 
 export function Arc (props) {
   const {children, degrees, degreesStart, onClick, percent} = props;
-  const style = Object.assign({}, Arc.defaultProps.style, props.style);
+  const style = assign({}, Arc.defaultProps.style, props.style);
   const {strokeWidth, width} = style;
   const center = width / 2;
   const r = (width - strokeWidth) / 2;
