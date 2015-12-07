@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {assign} from 'lodash';
 
 export function Arc (props) {
-  const {children, degrees, degreesStart, onClick, percent} = props;
+  const {children, degrees, degreesStart, percent} = props;
   const style = assign({}, Arc.defaultProps.style, props.style);
   const {strokeWidth, width} = style;
   const center = width / 2;
@@ -16,7 +16,7 @@ export function Arc (props) {
   const strokeDashoffset = strokeDasharray - strokeDasharray * decimal;
 
   return (
-    <div onClick={onClick} style={{position: 'relative'}}>
+    <div style={{height: width, position: 'relative', width}}>
       <svg
         style={style}
         viewBox={`0 0 ${width} ${width}`}>

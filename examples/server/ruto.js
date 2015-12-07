@@ -26,6 +26,7 @@ export const plugin = {
 <html>
   <head>
     <meta charSet="utf-8"/>
+    <meta content="user-scalable=no,initial-scale=1" name="viewport"/>
     <title>Ninja</title>
     <style>
       body {
