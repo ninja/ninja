@@ -1,46 +1,30 @@
 import {Arc, IconPause, IconPlay} from 'ninja';
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 const colorActive = 'rgb(14, 122, 254)';
 
-export class ArcExamplePlayback extends Component {
-  constructor (props) {
-    super(props);
+export function ArcExamplePlayback (props) {
+  const {decimal, icon, status, toggle} = props;
+  const styleIcon = {fill: icon.color, width: 32};
 
-    this.state = {playing: true};
-  }
-
-  handleClick () {
-    const {playing} = this.state;
-
-    this.setState({playing: !playing});
-  }
-
-  render () {
-    const {icon} = this.props;
-    const {playing} = this.state;
-    const boundClick = this.handleClick.bind(this);
-    const styleIcon = {fill: icon.color, width: 32};
-
-    return (
-      <Arc onClick={boundClick} style={{
-        stroke: icon.color,
-        strokeWidth: 8,
-        width: 64
+  return (
+    <Arc onClick={toggle} style={{
+      stroke: icon.color,
+      strokeWidth: 8,
+      width: 64
+    }}>
+      <Arc decimal={decimal} style={{
+        stroke: colorActive,
+        strokeWidth: 6,
+        width: 62
       }}>
-        <Arc decimal={playing ? .33 : 0} style={{
-          stroke: colorActive,
-          strokeWidth: 6,
-          width: 62
-        }}>
-          {playing ?
-            <IconPause style={styleIcon}/> :
-            <IconPlay style={styleIcon}/>
-          }
-        </Arc>
+        {status === 'playing' ?
+          <IconPause style={styleIcon}/> :
+          <IconPlay style={styleIcon}/>
+        }
       </Arc>
-    );
-  }
+    </Arc>
+  );
 }
 
 ArcExamplePlayback.propTypes = {

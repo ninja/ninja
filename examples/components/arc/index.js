@@ -15,6 +15,12 @@ function ArcExamplesComponent (props) {
   const styleLabel = {
     marginTop: '1vmin'
   };
+  const {
+    downloadPercent,
+    playbackDecimal,
+    playbackStatus,
+    rainbowDegrees
+  } = props.arc;
 
   return (
     <Layout pathname={props.location.pathname} title="Arc">
@@ -25,15 +31,18 @@ function ArcExamplesComponent (props) {
         width: '100vmin'
       }}>
         <div style={styleExample}>
-          <ArcExampleDownload/>
+          <ArcExampleDownload percent={downloadPercent}/>
           <div style={styleLabel}>{'Download'}</div>
         </div>
         <div style={styleExample}>
-          <ArcExamplePlayback icon={props.icon}/>
+          <ArcExamplePlayback
+            decimal={playbackDecimal}
+            icon={props.icon}
+            status={playbackStatus}/>
           <div style={styleLabel}>{'Playback'}</div>
         </div>
         <div style={styleExample}>
-          <ArcExampleRainbow/>
+          <ArcExampleRainbow degrees={rainbowDegrees}/>
           <div style={styleLabel}>{'Rainbow'}</div>
         </div>
       </div>
@@ -42,32 +51,22 @@ function ArcExamplesComponent (props) {
 }
 
 ArcExamplesComponent.propTypes = {
-  download: PropTypes.shape({
-    percent: PropTypes.number
+  arc: PropTypes.shape({
+    downloadPercent: PropTypes.number,
+    playbackDecimal: PropTypes.number,
+    playbackStatus: PropTypes.string,
+    rainbowDegrees: PropTypes.number
   }),
   icon: PropTypes.shape({
     color: PropTypes.string.isRequired
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  }).isRequired,
-  playback: PropTypes.shape({
-    decimal: PropTypes.number,
-    status: PropTypes.string
-  }),
-  rainbow: PropTypes.shape({
-    degrees: PropTypes.number
-  })
+  }).isRequired
 };
 
 function mapStateToProps (state) {
-  return {
-    download: state.download,
-    icon: state.icon,
-    location: state.location,
-    playback: state.playback,
-    rainbow: state.rainbow
-  };
+  return {arc: state.arc, icon: state.icon};
 }
 
 export const ArcExamples = connect(mapStateToProps)(ArcExamplesComponent);
