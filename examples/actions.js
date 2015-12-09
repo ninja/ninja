@@ -1,25 +1,21 @@
-export const UPDATE_DOWNLOAD_PERCENT = 'UPDATE_DOWNLOAD_PERCENT';
-export const UPDATE_ICON_COLOR = 'UPDATE_ICON_COLOR';
-export const UPDATE_PLAYBACK_DECIMAL = 'UPDATE_PLAYBACK_DECIMAL';
-export const UPDATE_PLAYBACK_STATUS = 'UPDATE_PLAYBACK_STATUS';
-export const UPDATE_RAINBOW_DEGREES = 'UPDATE_RAINBOW_DEGREES';
+import {arcTypes, iconTypes} from './types';
 
-export function updateDownloadPercent (percent) {
-  return {percent, type: UPDATE_DOWNLOAD_PERCENT};
+export function updateDownloadPercent (downloadPercent) {
+  return {downloadPercent, type: arcTypes.UPDATE_DOWNLOAD_PERCENT};
 }
 
-export function updateDownloadPercent (percent) {
-  return {percent, type: UPDATE_ICON_COLOR};
+export function updateIconColor (color) {
+  return {color, type: iconTypes.UPDATE_ICON_COLOR};
 }
 
-export function updateDownloadPercent (percent) {
-  return {percent, type: UPDATE_PLAYBACK_DECIMAL};
+export function updatePlaybackDecimal (playbackDecimal) {
+  return {playbackDecimal, type: arcTypes.UPDATE_PLAYBACK_DECIMAL};
 }
 
-export function updateDownloadPercent (percent) {
-  return {percent, type: UPDATE_PLAYBACK_STATUS};
+export function updatePlaybackStatus (playbackStatus) {
+  return {playbackStatus, type: arcTypes.UPDATE_PLAYBACK_STATUS};
 }
 
-export function updateDownloadPercent (percent) {
-  return {percent, type: UPDATE_RAINBOW_DEGREES};
+export function updateRainbowDegrees (rainbowDegrees) {
+  return {rainbowDegrees, type: arcTypes.UPDATE_RAINBOW_DEGREES};
 }

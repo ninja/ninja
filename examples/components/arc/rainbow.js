@@ -1,10 +1,11 @@
 import {Arc} from 'ninja';
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-const degrees = 180;
 const degreesStart = -180;
 
-export function ArcExampleRainbow () {
+export function ArcExampleRainbow (props) {
+  const {degrees} = props;
+
   return (
     <div style={{
       height: 50,
@@ -48,3 +49,7 @@ export function ArcExampleRainbow () {
     </div>
   );
 }
+
+ArcExampleRainbow.propTypes = {
+  degrees: PropTypes.number
+};
