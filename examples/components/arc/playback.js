@@ -8,22 +8,24 @@ export function ArcExamplePlayback (props) {
   const styleIcon = {fill: icon.color, width: 32};
 
   return (
-    <Arc onClick={toggle} style={{
-      stroke: icon.color,
-      strokeWidth: 8,
-      width: 64
-    }}>
-      <Arc decimal={decimal} style={{
-        stroke: colorActive,
-        strokeWidth: 6,
-        width: 62
+    <div onClick={toggle}>
+      <Arc style={{
+        stroke: icon.color,
+        strokeWidth: 8,
+        width: 64
       }}>
-        {status === 'playing' ?
-          <IconPause style={styleIcon}/> :
-          <IconPlay style={styleIcon}/>
-        }
+        <Arc decimal={decimal} style={{
+          stroke: colorActive,
+          strokeWidth: 6,
+          width: 62
+        }}>
+          {status === 'playing' ?
+            <IconPause style={styleIcon}/> :
+            <IconPlay style={styleIcon}/>
+          }
+        </Arc>
       </Arc>
-    </Arc>
+    </div>
   );
 }
 
@@ -32,5 +34,6 @@ ArcExamplePlayback.propTypes = {
   icon: PropTypes.shape({
     color: PropTypes.string.isRequired
   }),
-  status: PropTypes.string
+  status: PropTypes.string,
+  toggle: PropTypes.func
 };

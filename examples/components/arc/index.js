@@ -3,7 +3,9 @@ import {ArcExamplePlayback} from './playback';
 import {ArcExampleRainbow} from './rainbow';
 import {Layout} from '../layout';
 import React, {PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {updatePlaybackStatus} from '../../actions';
 
 function ArcExamplesComponent (props) {
   const styleExample = {
@@ -21,6 +23,11 @@ function ArcExamplesComponent (props) {
     playbackStatus,
     rainbowDegrees
   } = props.arc;
+  const {updatePlaybackStatus} = props.actions;
+
+  function toggle () {
+    updatePlaybackStatus(playbackStatus === 'playing' ? 'stopped' : 'playing');
+  }
 
   return (
     <Layout pathname={props.location.pathname} title="Arc">
@@ -38,7 +45,8 @@ function ArcExamplesComponent (props) {
           <ArcExamplePlayback
             decimal={playbackDecimal}
             icon={props.icon}
-            status={playbackStatus}/>
+            status={playbackStatus}
+            toggle={toggle}/>
           <div style={styleLabel}>{'Playback'}</div>
         </div>
         <div style={styleExample}>
@@ -51,6 +59,9 @@ function ArcExamplesComponent (props) {
 }
 
 ArcExamplesComponent.propTypes = {
+  actions: PropTypes.shape({
+    updatePlaybackStatus: PropTypes.func
+  }),
   arc: PropTypes.shape({
     downloadPercent: PropTypes.number,
     playbackDecimal: PropTypes.number,
@@ -69,4 +80,8 @@ function mapStateToProps (state) {
   return {arc: state.arc, icon: state.icon};
 }
 
-export const ArcExamples = connect(mapStateToProps)(ArcExamplesComponent);
+function mapDispatchToProps (dispatch) {
+  return {actions: bindActionCreators({updatePlaybackStatus}, dispatch)};
+}
+
+export const ArcExamples = connect(mapStateToProps, mapDispatchToProps)(ArcExamplesComponent);
