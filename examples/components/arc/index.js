@@ -6,17 +6,25 @@ import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {updatePlaybackStatus} from '../../actions';
+import {prefixAll} from 'inline-style-prefixer';
 
-function ArcExamplesComponent (props) {
-  const styleExample = {
+const styles = {
+  example: prefixAll({
     alignItems: 'center',
-    display: 'flex',
+    display: '-webkit-flex;flex',
     flexDirection: 'column',
     justifyContent: 'center'
-  };
-  const styleLabel = {
-    marginTop: '1vmin'
-  };
+  }),
+  examples: prefixAll({
+    alignItems: 'flex-end',
+    display: '-webkit-flex;flex',
+    justifyContent: 'space-around',
+    width: '100vmin'
+  }),
+  label: {marginTop: '1vmin'}
+};
+
+function ArcExamplesComponent (props) {
   const {
     downloadPercent,
     playbackDecimal,
@@ -31,27 +39,22 @@ function ArcExamplesComponent (props) {
 
   return (
     <Layout pathname={props.location.pathname} title="Arc">
-      <div style={{
-        alignItems: 'flex-end',
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100vmin'
-      }}>
-        <div style={styleExample}>
+      <div style={styles.examples}>
+        <div style={styles.example}>
           <ArcExampleDownload percent={downloadPercent}/>
-          <div style={styleLabel}>{'Download'}</div>
+          <div style={styles.label}>{'Download'}</div>
         </div>
-        <div style={styleExample}>
+        <div style={styles.example}>
           <ArcExamplePlayback
             decimal={playbackDecimal}
             icon={props.icon}
             status={playbackStatus}
             toggle={toggle}/>
-          <div style={styleLabel}>{'Playback'}</div>
+          <div style={styles.label}>{'Playback'}</div>
         </div>
-        <div style={styleExample}>
+        <div style={styles.example}>
           <ArcExampleRainbow degrees={rainbowDegrees}/>
-          <div style={styleLabel}>{'Rainbow'}</div>
+          <div style={styles.label}>{'Rainbow'}</div>
         </div>
       </div>
     </Layout>

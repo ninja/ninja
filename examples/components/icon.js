@@ -2,34 +2,38 @@ import {IconPause, IconPlay, IconStop} from 'ninja';
 import {Layout} from './layout';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {prefixAll} from 'inline-style-prefixer';
 
 function IconExamplesComponent (props) {
-  const styleIcon = {fill: props.icon.color, height: '10vmin'};
-  const styleIconWrapper = {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
+  const styles = {
+    grid: prefixAll({
+      alignItems: 'center',
+      display: '-webkit-flex;flex',
+      justifyContent: 'space-around',
+      width: '100vmin'
+    }),
+    icon: {fill: props.icon.color, height: '10vmin'},
+    iconWrapper: prefixAll({
+      alignItems: 'center',
+      display: '-webkit-flex;flex',
+      flexDirection: 'column',
+      justifyContent: 'center'
+    })
   };
 
   return (
     <Layout pathname={props.location.pathname} title="Icon">
-      <div style={{
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100vmin'
-      }}>
-        <div style={styleIconWrapper}>
-          <IconPause style={styleIcon}/>
+      <div style={styles.grid}>
+        <div style={styles.iconWrapper}>
+          <IconPause style={styles.icon}/>
           <div>{'pause'}</div>
         </div>
-        <div style={styleIconWrapper}>
-          <IconPlay style={styleIcon}/>
+        <div style={styles.iconWrapper}>
+          <IconPlay style={styles.icon}/>
           <div>{'play'}</div>
         </div>
-        <div style={styleIconWrapper}>
-          <IconStop style={styleIcon}/>
+        <div style={styles.iconWrapper}>
+          <IconStop style={styles.icon}/>
           <div>{'stop'}</div>
         </div>
       </div>

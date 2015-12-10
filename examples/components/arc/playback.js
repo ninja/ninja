@@ -1,27 +1,21 @@
 import {Arc, IconPause, IconPlay} from 'ninja';
 import React, {PropTypes} from 'react';
 
-const colorActive = 'rgb(14, 122, 254)';
-
 export function ArcExamplePlayback (props) {
   const {decimal, icon, status, toggle} = props;
-  const styleIcon = {fill: icon.color, width: 32};
+  const styles = {
+    icon: {fill: icon.color, width: 32},
+    progress: {stroke: 'rgb(14, 122, 254)', strokeWidth: 6, width: 62},
+    track: {stroke: icon.color, strokeWidth: 8, width: 64}
+  };
 
   return (
-    <div onClick={toggle}>
-      <Arc style={{
-        stroke: icon.color,
-        strokeWidth: 8,
-        width: 64
-      }}>
-        <Arc decimal={decimal} style={{
-          stroke: colorActive,
-          strokeWidth: 6,
-          width: 62
-        }}>
+    <div onMouseUp={toggle} onTouchEnd={toggle}>
+      <Arc style={styles.track}>
+        <Arc decimal={decimal} style={styles.progress}>
           {status === 'playing' ?
-            <IconPause style={styleIcon}/> :
-            <IconPlay style={styleIcon}/>
+            <IconPause style={styles.icon}/> :
+            <IconPlay style={styles.icon}/>
           }
         </Arc>
       </Arc>

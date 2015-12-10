@@ -1,4 +1,5 @@
 import {arcTypes} from '../types';
+import {assign} from 'lodash';
 
 export function arc (state = {
   downloadPercent: 75,
@@ -10,19 +11,19 @@ export function arc (state = {
     case arcTypes.UPDATE_DOWNLOAD_PERCENT:
       const {downloadPercent} = action;
 
-      return Object.assign({}, state, {downloadPercent});
+      return assign({}, state, {downloadPercent});
     case arcTypes.UPDATE_PLAYBACK_DECIMAL:
       const {playbackDecimal} = action;
 
-      return Object.assign({}, state, {playbackDecimal});
+      return assign({}, state, {playbackDecimal});
     case arcTypes.UPDATE_PLAYBACK_STATUS:
       const {playbackStatus} = action;
 
-      return Object.assign({}, state, {playbackStatus});
+      return assign({}, state, {playbackStatus});
     case arcTypes.UPDATE_RAINBOW_DEGREES:
       const {rainbowDegrees} = action;
 
-      return Object.assign({}, state, {rainbowDegrees});
+      return assign({}, state, {rainbowDegrees});
   }
 
   return state;

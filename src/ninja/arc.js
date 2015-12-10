@@ -1,5 +1,17 @@
 import React, {PropTypes} from 'react';
 import {assign} from 'lodash';
+import {prefixAll} from 'inline-style-prefixer';
+
+const prefixedStyle = prefixAll({
+  alignItems: 'center',
+  bottom: 0,
+  display: '-webkit-flex;flex',
+  justifyContent: 'center',
+  left: 0,
+  position: 'absolute',
+  right: 0,
+  top: 0
+});
 
 export function Arc (props) {
   const {children, degrees, degreesStart, percent} = props;
@@ -14,12 +26,9 @@ export function Arc (props) {
   if (degrees > 0) { decimal = degrees / 360; }
 
   const strokeDashoffset = strokeDasharray - strokeDasharray * decimal;
-
   return (
     <div style={{height: width, position: 'relative', width}}>
-      <svg
-        style={style}
-        viewBox={`0 0 ${width} ${width}`}>
+      <svg style={style} viewBox={`0 0 ${width} ${width}`}>
         <circle
           cx={center}
           cy={center}
@@ -30,16 +39,7 @@ export function Arc (props) {
           stroke-width={strokeWidth}
           transform={`rotate(${degreesStart} ${center} ${center})`}/>
       </svg>
-      <div style={{
-        alignItems: 'center',
-        bottom: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0
-      }}>{children}</div>
+      <div style={prefixedStyle}>{children}</div>
     </div>
   );
 }
