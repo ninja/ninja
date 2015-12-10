@@ -3,38 +3,58 @@ import {ArcExamplePlayback} from './playback';
 import {ArcExampleRainbow} from './rainbow';
 import {Layout} from '../layout';
 import React, {PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {updatePlaybackStatus} from '../../actions';
+import {prefixAll} from 'inline-style-prefixer';
 
-function ArcExamplesComponent (props) {
-  const styleExample = {
+const styles = {
+  example: prefixAll({
     alignItems: 'center',
-    display: 'flex',
+    display: '-webkit-flex;flex',
     flexDirection: 'column',
     justifyContent: 'center'
-  };
-  const styleLabel = {
-    marginTop: '1vmin'
-  };
+  }),
+  examples: prefixAll({
+    alignItems: 'flex-end',
+    display: '-webkit-flex;flex',
+    justifyContent: 'space-around',
+    width: '100vmin'
+  }),
+  label: {marginTop: '1vmin'}
+};
+
+function ArcExamplesComponent (props) {
+  const {
+    downloadPercent,
+    playbackDecimal,
+    playbackStatus,
+    rainbowDegrees
+  } = props.arc;
+  const {updatePlaybackStatus} = props.actions;
+
+  function toggle () {
+    updatePlaybackStatus(playbackStatus === 'playing' ? 'stopped' : 'playing');
+  }
 
   return (
     <Layout pathname={props.location.pathname} title="Arc">
-      <div style={{
-        alignItems: 'flex-end',
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100vmin'
-      }}>
-        <div style={styleExample}>
-          <ArcExampleDownload/>
-          <div style={styleLabel}>{'Download'}</div>
+      <div style={styles.examples}>
+        <div style={styles.example}>
+          <ArcExampleDownload percent={downloadPercent}/>
+          <div style={styles.label}>{'Download'}</div>
         </div>
-        <div style={styleExample}>
-          <ArcExamplePlayback icon={props.icon}/>
-          <div style={styleLabel}>{'Playback'}</div>
+        <div style={styles.example}>
+          <ArcExamplePlayback
+            decimal={playbackDecimal}
+            icon={props.icon}
+            status={playbackStatus}
+            toggle={toggle}/>
+          <div style={styles.label}>{'Playback'}</div>
         </div>
-        <div style={styleExample}>
-          <ArcExampleRainbow/>
-          <div style={styleLabel}>{'Rainbow'}</div>
+        <div style={styles.example}>
+          <ArcExampleRainbow degrees={rainbowDegrees}/>
+          <div style={styles.label}>{'Rainbow'}</div>
         </div>
       </div>
     </Layout>
@@ -42,32 +62,29 @@ function ArcExamplesComponent (props) {
 }
 
 ArcExamplesComponent.propTypes = {
-  download: PropTypes.shape({
-    percent: PropTypes.number
+  actions: PropTypes.shape({
+    updatePlaybackStatus: PropTypes.func
+  }),
+  arc: PropTypes.shape({
+    downloadPercent: PropTypes.number,
+    playbackDecimal: PropTypes.number,
+    playbackStatus: PropTypes.string,
+    rainbowDegrees: PropTypes.number
   }),
   icon: PropTypes.shape({
     color: PropTypes.string.isRequired
   }),
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
-  }).isRequired,
-  playback: PropTypes.shape({
-    decimal: PropTypes.number,
-    status: PropTypes.string
-  }),
-  rainbow: PropTypes.shape({
-    degrees: PropTypes.number
-  })
+  }).isRequired
 };
 
 function mapStateToProps (state) {
-  return {
-    download: state.download,
-    icon: state.icon,
-    location: state.location,
-    playback: state.playback,
-    rainbow: state.rainbow
-  };
+  return {arc: state.arc, icon: state.icon};
 }
 
-export const ArcExamples = connect(mapStateToProps)(ArcExamplesComponent);
+function mapDispatchToProps (dispatch) {
+  return {actions: bindActionCreators({updatePlaybackStatus}, dispatch)};
+}
+
+export const ArcExamples = connect(mapStateToProps, mapDispatchToProps)(ArcExamplesComponent);

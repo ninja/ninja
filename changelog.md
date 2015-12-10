@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+##[3.0.5] - 2015-12-09
+### Added
+- Prefixed styles applied to arc for improved browser compatibility.
+
+### Changed
+- Updates examples with redux for data.
+- Adds browser prefixed styles to examples.
+
 ##[3.0.4] - 2015-12-07
 ### Changed
 - Improved scaling of examples with mobile devices.
@@ -60,7 +68,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.4
+[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.5
+[3.0.5]: https://github.com/ninja/ruto/compare/3.0.5...3.0.4
 [3.0.4]: https://github.com/ninja/ruto/compare/3.0.4...3.0.3
 [3.0.3]: https://github.com/ninja/ruto/compare/3.0.3...3.0.2
 [3.0.2]: https://github.com/ninja/ruto/compare/3.0.2...3.0.1

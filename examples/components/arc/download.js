@@ -1,15 +1,25 @@
 import {Arc} from 'ninja';
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 const color = 'rgb(14, 122, 254)';
 const width = 48;
+const styles = {
+  icon: {backgroundColor: color, height: 12, width: 12},
+  progress: {stroke: color, strokeWidth: 8, width},
+  track: {fill: 'white', stroke: color, strokeWidth: 3, width}
+};
 
-export function ArcExampleDownload () {
+export function ArcExampleDownload (props) {
   return (
-    <Arc style={{fill: 'white', stroke: color, strokeWidth: 3, width}}>
-      <Arc percent={75} style={{stroke: color, strokeWidth: 8, width}}>
-        <div style={{backgroundColor: color, height: 12, width: 12}}/>
+    <Arc style={styles.track}>
+      <Arc percent={props.percent} style={styles.progress}>
+        <div style={styles.icon}/>
       </Arc>
     </Arc>
   );
 }
+
+ArcExampleDownload.propTypes = {
+  percent: PropTypes.number
+};
+
