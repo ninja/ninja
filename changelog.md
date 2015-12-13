@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+##[3.0.7] - 2015-12-13
+### Added
+- Repeat icon.
+
+### Changed
+- Maximizes icons within their bounding box.
+- Balances relative size of all icons for balance.
+
 ##[3.0.6] - 2015-12-09
 ### Changed
 - Makes inline-style-prefixer, lodash and react required dependencies.
@@ -72,7 +80,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.6
+[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.7
+[3.0.7]: https://github.com/ninja/ruto/compare/3.0.7...3.0.6
 [3.0.6]: https://github.com/ninja/ruto/compare/3.0.6...3.0.5
 [3.0.5]: https://github.com/ninja/ruto/compare/3.0.5...3.0.4
 [3.0.4]: https://github.com/ninja/ruto/compare/3.0.4...3.0.3
