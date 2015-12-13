@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react';
 export function ArcExamplePlayback (props) {
   const {decimal, icon, status, toggle} = props;
   const styles = {
-    icon: {fill: icon.color, width: 32},
+    icon: {fill: icon.color, width: 24},
     progress: {stroke: 'rgb(14, 122, 254)', strokeWidth: 6, width: 62},
     track: {stroke: icon.color, strokeWidth: 8, width: 64}
   };
