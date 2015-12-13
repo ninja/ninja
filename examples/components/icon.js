@@ -1,4 +1,4 @@
-import {IconPause, IconPlay, IconStop} from 'ninja';
+import {IconPause, IconPlay, IconRepeat, IconStop} from 'ninja';
 import {Layout} from './layout';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
@@ -12,7 +12,7 @@ function IconExamplesComponent (props) {
       justifyContent: 'space-around',
       width: '100vmin'
     }),
-    icon: {fill: props.icon.color, height: '10vmin'},
+    icon: {fill: props.icon.color, height: '5vmin'},
     iconWrapper: prefixAll({
       alignItems: 'center',
       display: '-webkit-flex;flex',
@@ -31,6 +31,10 @@ function IconExamplesComponent (props) {
         <div style={styles.iconWrapper}>
           <IconPlay style={styles.icon}/>
           <div>{'play'}</div>
+        </div>
+        <div style={styles.iconWrapper}>
+          <IconRepeat style={styles.icon}/>
+          <div>{'repeat'}</div>
         </div>
         <div style={styles.iconWrapper}>
           <IconStop style={styles.icon}/>
