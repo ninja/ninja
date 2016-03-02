@@ -2,13 +2,12 @@ import {Layout} from './layout';
 import {Link} from 'react-router';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {prefixAll} from 'inline-style-prefixer';
 
-const style = prefixAll({
-  display: '-webkit-flex;flex',
+const style = {
+  display: 'flex',
   justifyContent: 'space-around',
   width: '100vmin'
-});
+};
 
 function WelcomeComponent (props) {
   return (
