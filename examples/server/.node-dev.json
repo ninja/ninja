@@ -3,7 +3,6 @@
     "js": "babel-core/register"
   },
   "ignore": [
-    "examples/components",
-    "examples/containers"
+    "examples/client"
   ]
 }

@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+##[3.0.8] - 2016-03-01
+### Changed
+- Corrects styling for Firefox.
+- Tightens up style API.
+- Brings dependencies up to date.
+
 ##[3.0.7] - 2015-12-13
 ### Added
 - Repeat icon.
@@ -80,14 +86,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Previous jQuery plugin.
 
-[Unreleased]: https://github.com/ninja/ruto/compare/develop...3.0.7
-[3.0.7]: https://github.com/ninja/ruto/compare/3.0.7...3.0.6
-[3.0.6]: https://github.com/ninja/ruto/compare/3.0.6...3.0.5
-[3.0.5]: https://github.com/ninja/ruto/compare/3.0.5...3.0.4
-[3.0.4]: https://github.com/ninja/ruto/compare/3.0.4...3.0.3
-[3.0.3]: https://github.com/ninja/ruto/compare/3.0.3...3.0.2
-[3.0.2]: https://github.com/ninja/ruto/compare/3.0.2...3.0.1
-[3.0.1]: https://github.com/ninja/ruto/compare/3.0.1...3.0.0
-[3.0.0]: https://github.com/ninja/ruto/compare/3.0.0...2.0.1
-[2.0.1]: https://github.com/ninja/ruto/compare/2.0.1...2.0.0
-[2.0.0]: https://github.com/ninja/ruto/compare/2.0.0
+[Unreleased]: https://github.com/ninja/ninja/compare/develop...3.0.8
+[3.0.8]: https://github.com/ninja/ninja/compare/3.0.8...3.0.7
+[3.0.7]: https://github.com/ninja/ninja/compare/3.0.7...3.0.6
+[3.0.6]: https://github.com/ninja/ninja/compare/3.0.6...3.0.5
+[3.0.5]: https://github.com/ninja/ninja/compare/3.0.5...3.0.4
+[3.0.4]: https://github.com/ninja/ninja/compare/3.0.4...3.0.3
+[3.0.3]: https://github.com/ninja/ninja/compare/3.0.3...3.0.2
+[3.0.2]: https://github.com/ninja/ninja/compare/3.0.2...3.0.1
+[3.0.1]: https://github.com/ninja/ninja/compare/3.0.1...3.0.0
+[3.0.0]: https://github.com/ninja/ninja/compare/3.0.0...2.0.1
+[2.0.1]: https://github.com/ninja/ninja/compare/2.0.1...2.0.0
+[2.0.0]: https://github.com/ninja/ninja/compare/2.0.0

@@ -1,36 +1,32 @@
 import {Link} from 'react-router';
 import React, {PropTypes} from 'react';
-import {prefixAll} from 'inline-style-prefixer';
 
 const styles = {
   mirror: {color: 'transparent'},
-  logo: {fontSize: '10vmin'},
-  navigation: prefixAll({
+  navigation: {
     alignItems: 'center',
-    display: '-webkit-flex;flex',
+    display: 'flex',
     justifyContent: 'space-around',
     width: '100vmin'
-  }),
-  title: {fontSize: '8vmin'},
-  view: prefixAll({
+  },
+  title: {fontSize: 30},
+  view: {
     alignItems: 'center',
-    display: '-webkit-flex;flex',
+    display: 'flex',
     flexDirection: 'column',
-    height: '60vmin',
+    height: 220,
     justifyContent: 'space-around'
-  })
+  }
 };
 
 export function Layout (props) {
-  const {children, pathname, title} = props;
-  const showBack = pathname && pathname !== '/';
+  const {children, showBack, title} = props;
 
   return (
     <div style={styles.view}>
-      <div style={styles.logo}>{'Ninja'}</div>
       <div style={styles.navigation}>
         {showBack ? <Link to="/">{'Back'}</Link> : null}
-        {title ? <div style={styles.title}>{title}</div> : null}
+        <div style={styles.title}>{title ? `Ninja: ${title}` : 'Ninja'}</div>
         {showBack ? <div style={styles.mirror}>{'Back'}</div> : null}
       </div>
       {children}
@@ -40,6 +36,6 @@ export function Layout (props) {
 
 Layout.propTypes = {
   children: PropTypes.node,
-  pathname: PropTypes.string,
+  showBack: PropTypes.bool,
   title: PropTypes.string
 };
