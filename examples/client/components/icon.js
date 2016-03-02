@@ -2,27 +2,26 @@ import {IconPause, IconPlay, IconRepeat, IconStop} from 'ninja';
 import {Layout} from './layout';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {prefixAll} from 'inline-style-prefixer';
 
 function IconExamplesComponent (props) {
   const styles = {
-    grid: prefixAll({
+    grid: {
       alignItems: 'center',
-      display: '-webkit-flex;flex',
-      justifyContent: 'space-around',
-      width: '100vmin'
-    }),
-    icon: {fill: props.icon.color, height: '5vmin'},
-    iconWrapper: prefixAll({
+      display: 'flex',
+      justifyContent: 'space-around'
+    },
+    icon: {fill: props.icon.color, height: 36, marginBottom: 6},
+    iconWrapper: {
       alignItems: 'center',
-      display: '-webkit-flex;flex',
+      display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center'
-    })
+      justifyContent: 'center',
+      margin: 18
+    }
   };
 
   return (
-    <Layout pathname={props.location.pathname} title="Icon">
+    <Layout showBack title="Icon">
       <div style={styles.grid}>
         <div style={styles.iconWrapper}>
           <IconPause style={styles.icon}/>
@@ -46,16 +45,11 @@ function IconExamplesComponent (props) {
 }
 
 IconExamplesComponent.propTypes = {
-  icon: PropTypes.shape({
-    color: PropTypes.string.isRequired
-  }),
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }).isRequired
+  icon: PropTypes.shape({color: PropTypes.string.isRequired})
 };
 
 function mapStateToProps (state) {
-  return {icon: state.icon, location: state.location};
+  return {icon: state.icon};
 }
 
 export const IconExamples = connect(mapStateToProps)(IconExamplesComponent);
