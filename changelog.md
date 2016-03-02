@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Corrects styling for Firefox.
 - Tightens up style API.
+- Brings dependencies up to date.
 
 ##[3.0.7] - 2015-12-13
 ### Added
